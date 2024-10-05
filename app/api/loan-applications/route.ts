@@ -7,12 +7,10 @@ import { mongoConnect } from "@/config/mongodb";
 export async function POST(request: NextRequest) {
   const reqBody = await request.json();
 
-  if (!process.env.MONGODB_URI) {
-    return res
-      .status(500)
-      .json({ message: "MONGODB_URI not configured in .env" });
-  }
+    if (!process.env.MONGODB_URI) {
+    return  NextResponse.json({ message: "MONGODB_URI not configured in .env" }, { status: 500 });
 
+  }
   await mongoConnect();
 
   const loanRequest = new LoanRequest({ ...reqBody, loanstatus: 'pending' }); // Set the status to 'pending'
