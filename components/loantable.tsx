@@ -211,7 +211,7 @@ const LoanTable: React.FC = () => {
                                 key={index}
                                 variant="ghost"
                                 className="w-full text-left px-4 py-2 hover:bg-gray-100"
-                                onClick={() => {
+                                onClick={(event) => {
                                   handleDropdownAction(loan._id, option);
                                   // Prevent default behavior to avoid full page refresh
                                   event.preventDefault();
